@@ -1,0 +1,75 @@
+<div class="alert alert-danger" *ngIf="errorMsg !=undefined">{{errorMsg}}</div>
+ 
+<div style="margin-top: 100px; margin-bottom: 50px;">
+  <h2 class="text-center">Transactions</h2>
+  <hr width="120">
+  <br>
+  <div class="col-md-4 mx-auto">
+    <div style="display: inline-block; width: 48.5%;">
+      <input class="form-control" type="text" onfocus="(this.type='date')" [(ngModel)]="accreport.fromDate" placeholder="From date">
+    </div>
+    &nbsp;
+    <div style="display: inline-block; width: 48.5%;">
+      <input class="form-control" type="text" onfocus="(this.type='date')" [(ngModel)]="accreport.toDate" placeholder="To date">
+    </div>
+    <br>
+    <br>
+    <div class="mt-2 text-center">
+      <button (click)="viewTransactionDate()" class="btn btn-primary" pla>Search</button>
+      </div>
+      <br>
+ </div>
+<table  class="table shadow text-center table-striped table-hover col-md-8 mx-auto mt-3">
+  <thead class="thead-dark shadow white-text">
+
+  <tr>
+    <th>TransactionID</th>
+    <th>Transaction Amount</th>
+    <th>Transaction Date </th>
+    <th>Transaction Description</th>
+    <th>Transaction Type</th>
+  
+  
+  </tr>
+  </thead>
+
+  <tr *ngFor="let trans of transactions">
+    <td>{{trans.transaccountId}}</td>
+    <td>{{trans.transAmount | currency:'INR'}}</td>
+    <td>{{trans.transDate}}</td>
+    <td>{{trans.transDescription}}</td>
+    <td>{{trans.transType}}</td>
+  
+    
+
+
+  </tr>
+</table>
+<br>
+<div class="mt-2 text-center"><a  class="btn btn-primary" (click)="download()">Download Report</a></div>
+</div>
+
+
+
+<!-- <table class="table table-primary table-striped table-hover col-md-8 mx-auto mt-3">
+  <tr>
+    <th>TransactionID</th>
+    <th>Transaction Amount</th>
+    <th>Transaction Date </th>
+    <th>Transaction Description</th>
+    <th>Transaction Type</th>
+  
+  
+  </tr>
+
+  <tr *ngFor="let trans of transactions">
+    <td>{{trans.transaccountId}}</td>
+    <td>{{trans.transAmount | currency:'INR'}}</td>
+    <td>{{trans.transDate}}</td>
+    <td>{{trans.transDescription}}</td>
+    <td>{{trans.transType}}</td>
+  </tr>
+
+  
+</table>
+<div><a  class="btn btn-primary" (click)="download()">Download Report</a></div> -->

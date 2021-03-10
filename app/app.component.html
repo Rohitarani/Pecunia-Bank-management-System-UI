@@ -1,0 +1,134 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<nav style="width: auto; height: 8%;" class="navbar navbar-white bg-white shadow primary-color">
+  <a style="margin-left: 46.5%;" class="navbar-brand" href="#">
+    <img src="src/assets/images/logo.jpg" style="margin-right: 50%;" height="45" width="100">
+  </a>
+</nav>
+<div *ngIf="token==null && flag==false" style=" height: 92%; background-image: url('src/assets/images/background3.jpg'); background-size: 100%; ">
+  <div *ngIf="msg!=undefined" class="alert alert-danger">{{msg}}</div> 
+  <div class="container">
+    <div class="d-flex justify-content-center h-100">
+      <div style="height: 290px; margin-top: auto; margin-bottom: auto; display: inline-block; width: 50%;">
+      <h1 class="display-4" style="color: white; font-size:80px;">Welcome to Pecunia online banking</h1>
+      </div>
+      <div class="card shadow" style=" margin-left: 10%; width: 35%; display: inline-block;">
+        <div class="card-header">
+          <h3 class="text-center white">Account Login</h3>
+        </div>
+        
+        <div class="card-body">
+            
+          <form #frm="ngForm" (ngSubmit)="login()">
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text shadow"></span>
+                  </div>
+                  <input type="text" name="customerId" required [(ngModel)]="userid" #mcustomerId="ngModel" class="form-control" placeholder="username">
+                </div>
+              
+
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text shadow"></span>
+                  </div>
+                  <input type="password" name="customerPassword" required [(ngModel)]="password" #mpassword="ngModel" class="form-control" placeholder="password">
+                </div>
+
+                <div  *ngIf="flag==false">
+                  <a style="color: #FFC312;" routerLink="forgetpassword" (click)="toggle()">Forget Password</a>
+                </div>
+                
+
+                <br>
+
+                <div class="form-group">
+                  <input type="submit" value="Login" [disabled]="!frm.valid" class="btn shadow float-right login_btn">
+                </div>
+    
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4 mx-auto" *ngIf="token==null">
+    <div *ngIf="flag==true">
+      <router-outlet></router-outlet>
+      <br>
+      <div class="mt-2 text-center">
+      <button class="btn btn-danger" routerLink="" (click)="toggle()">Back to login page</button>
+      </div>
+  </div>
+</div>
+
+
+<div *ngIf="token!=null && role=='customer'">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="src/assets/images/logo.jpg" style="margin-right: 50%;" height="45" width="100">
+      </a>
+      
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-item nav-link" routerLink="">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-item nav-link" routerLink="viewaccount">View Account</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-item nav-link" routerLink="transferfund">Transfer Fund</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-item nav-link" routerLink="myprofile">My Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-item nav-link" routerLink="" (click)="logout()">LogOut</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+</div>
+
+
+<div *ngIf="token!=null && role=='admin'">
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="src/assets/images/logo.jpg" style="margin-right: 50%;" height="45" width="100">
+      </a>
+      
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-item nav-link" routerLink="">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-item nav-link" routerLink="addaccount">Add Account</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-item nav-link" routerLink="addcustomer">Add Customer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-item nav-link" routerLink="myprofile">My Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-item nav-link" routerLink="" (click)="logout()">LogOut</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+</div>
+
+
+
+
+

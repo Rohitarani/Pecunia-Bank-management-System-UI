@@ -1,0 +1,84 @@
+
+<div style="margin-top: 100px;" *ngIf="role=='customer'">
+  <section class="alert alert-danger col-md-4 mx-auto m1" *ngIf="msg !=undefined">{{msg}}</section>
+    <div class="container">
+      <h2 class="text-center">Accounts</h2>
+      <hr width="120">
+      <br>
+      <div class="row justify-content-md-center">
+        <div class="col-md-auto"> <input type="text" [(ngModel)]="searchflag" class="form-control " placeholder="Search by Account Type"/> 
+          <div class="mt-2 text-center"><button (click)="toggle()"  class="btn btn-primary mt-1">Search</button> 
+          </div>
+          <br>
+          </div>
+      </div> 
+      </div> 
+ 
+    <table class="table shadow text-center table-striped table-hover col-md-8 mx-auto mt-3">
+      <thead class="thead-dark shadow white-text">
+      <tr>
+        <th>AccountId</th>
+        <th>Account Name</th>
+        <th>Account balance</th>
+        <th>Last Update</th>
+        <th>Account Status</th>
+        <th>Transactions</th>
+      </tr>
+      </thead>
+      <tr *ngFor="let acc of accounts | search:searchflag">
+          <td>{{acc.accountId}}</td>
+          <td>{{acc.accountName  | titlecase}}</td>
+          <td>{{acc.accountBalance  | currency:'INR' }}</td>
+          <td>{{acc.lastUpdated }}</td>
+          <td>{{acc.accountStatus | lowercase}}</td>
+          <td><button class="btn btn-warning" routerLink="/viewtransaction/{{acc.accountId}}">View Transactions</button></td>
+      </tr>
+    </table>
+ 
+  
+  
+</div>
+
+<div *ngIf="role=='admin'">
+    <div class="danger">You are authorised</div>
+</div>
+
+
+<!-- 
+<div *ngIf="role=='customer'">
+  <section class="alert alert-danger col-md-4 mx-auto m1" *ngIf="msg !=undefined">{{msg}}</section>
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col col-lg-1"></div>
+        <div class="col col-lg-1"></div>
+        <div class="col-md-auto"> <input type="text" [(ngModel)]="searchflag" class=" mt-3"/>
+          <button (click)="toggle()"  class="btn btn-warning mt-1">search</button> </div>
+      </div> 
+      </div> 
+ 
+    <table class="table table-primary table-striped table-hover col-md-8 mx-auto mt-3">
+      <tr>
+        <th>AccountId</th>
+        <th>Account Name</th>
+        <th>Account balance</th>
+        <th>Last Update</th>
+        <th>Account Status</th>
+        <th>View Txns</th>
+      </tr>
+      <tr *ngFor="let acc of accounts | search:searchflag">
+          <td>{{acc.accountId}}</td>
+          <td>{{acc.accountName  | titlecase}}</td>
+          <td>{{acc.accountBalance  | currency:'INR' }}</td>
+          <td>{{acc.lastUpdated }}</td>
+          <td>{{acc.accountStatus | lowercase}}</td>
+          <td><button class="btn btn-warning" routerLink="/viewtransaction/{{acc.accountId}}">View TXNS</button></td>
+      </tr>
+    </table>
+ 
+  
+  
+</div>
+
+<div *ngIf="role=='admin'">
+    <div class="danger">You are authorised</div>
+</div> -->

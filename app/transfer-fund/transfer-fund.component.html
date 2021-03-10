@@ -1,0 +1,38 @@
+<section style="margin-top: 100px; margin-bottom: 50px;" class="col-md-4 mx-auto">
+  <div class="alert alert-success" *ngIf="msg !=undefined">{{msg}}</div>
+  <div class="alert alert-danger" *ngIf="errorMsg !=undefined">{{errorMsg}}</div>
+  <h2 class="text-center">Transfer Fund</h2>
+  <hr width="120">
+  <br>
+  <br>
+
+  <form #frm="ngForm" (ngSubmit)="transfer()">
+    <select [(ngModel)]="trans.fromAccountId" name="type" class="form-control"  required #modelfromid="ngModel">
+      <option [ngValue]="undefined" hidden>From Account Id</option>
+      <option *ngFor="let acc of fromAccounts" value="{{acc.accountId}}">{{acc.accountId}}</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="modelfromid.invalid && modelfromid.touched">
+      <div *ngIf="modelfromid.errors.required" style="color: red;"> *  From Account is required</div>
+    </div>
+    <br>
+    <br>
+
+    <div><input type="string" name="toAcc" [(ngModel)]="trans.toAccountId" required #mltoid="ngModel" class="form-control" placeholder="To Account Id"/></div>
+    <div class="alert alert-danger" *ngIf="mltoid.invalid && mltoid.touched">
+      <div *ngIf="mltoid.errors.required" style="color: red;"> * To Account is required</div>
+    </div>
+    <br>
+    <br>
+
+    <div><input type="text" name="amount" [(ngModel)]="trans.amt" required #mlamt="ngModel" class="form-control" pattern="[0-9]*" placeholder="Amount"/></div>
+    <div class="alert alert-danger" *ngIf="mlamt.invalid && mlamt.touched">
+      <div *ngIf="mlamt.errors.required" style="color: red;"> * Amount is required</div>
+      <div ngIf="mlamt.errors.pattern" style="color: red;"> Amount should be numeric</div>
+    </div>
+    <br>
+
+    <div class="mt-2 text-center"><input style="width: 100px;" type="submit"  value="Pay" [disabled]="!frm.valid" class="btn btn-success"/>
+    </div>
+
+  </form>
+</section>

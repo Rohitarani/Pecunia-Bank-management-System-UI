@@ -1,0 +1,75 @@
+
+<div style="margin-top: 100px;">
+  <h2 class="text-center">My Profile</h2>
+  <hr width="120">
+  <br>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 img">
+        <img src="src/assets/images/profile.png" height="250" width="250" alt="" class="img-rounded">
+      </div>
+      <div class="col-md-5 details">
+        <blockquote>
+          <h5>{{customer.customerName}}</h5>
+          <small><cite title="Source Title">{{customer.customerAddress}} </cite></small>
+        </blockquote>
+        <table class="table shadow table-striped table-hover">
+          <tr>
+            <th>CustomerId</th> <td>{{customer.customerId}}</td>
+          </tr>
+
+          <tr>
+            <th>Adhar Number</th> <td>{{customer.customerAadhar}}</td>
+          </tr>
+          <tr>
+            <th>Pan Number</th> <td>{{customer.customerPan}}</td>
+          </tr>
+          <tr>
+            <th>Contact Number</th><td>{{customer.customerContact}}</td>
+          </tr>
+
+          <tr>
+            <th>Date of Birth</th> <td>{{customer.customerDob}}</td>
+          </tr>
+        </table>
+        
+        <button class="btn btn-success" routerLink="/changepassword">Change Password</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+<!-- <table class="table table-primary table-striped table-hover col-md-4 mx-auto mt-3">
+  <tr>
+    <th>CustomerId</th> <td>{{customer.customerId}}</td>
+  </tr>
+  <tr>
+    <th>Customer Name</th> <td>{{customer.customerName}}</td>
+  </tr>
+  <tr>
+    <th>Role</th> <td>{{customer.role}}</td>
+  </tr>
+  <tr>
+    <th>Customer Address</th> <td>{{customer.customerAddress}}</td>
+  </tr>
+  <tr>
+    <th>Adhar Number</th> <td>{{customer.customerAadhar}}</td>
+  </tr>
+  <tr>
+    <th>Pan Number</th> <td>{{customer.customerPan}}</td>
+  </tr>
+  <tr>
+    <th>Contact Number</th> <td>{{customer.customerContact}}</td>
+  </tr>
+  <tr>
+    <th>Gender</th> <td>{{customer.customerGender}}</td>
+  </tr>
+  <tr>
+    <th>Date of Birth</th> <td>{{customer.customerDob}}</td>
+  </tr>
+</table> -->
+

@@ -1,0 +1,128 @@
+@import '~bootstrap/dist/css/bootstrap.css';
+
+html,body{
+    background-image: url('src/assets/images/bg_home.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+    }
+    
+    .container{
+    height: 100%;
+    align-content: center;
+    }
+    
+    .card{
+    height: 300px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 400px;
+    background-color: rgba(0,0,0,0.5) !important;
+    }
+    
+    .card-header h3{
+    color: white;
+    }
+    
+    .input-group-prepend span{
+    width: 30px;
+    background-color: #FFC312;
+    color: black;
+    border:0 !important;
+    }
+    
+    input:focus{
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important;
+    }
+    
+    .login_btn{
+    color: black;
+    background-color: #FFC312;
+    width: 100px;
+    }
+    
+    .login_btn:hover{
+    color: black;
+    background-color: white;
+    }
+    
+    .masthead {
+        height: 92vh;
+        min-height: 500px;
+        
+      }
+      nav ul {
+
+        margin: 0;
+    
+        padding: 0
+    
+    }
+    
+    nav li {
+    
+        list-style: none;
+    
+        font-size: 12px;
+    
+        float: left;
+    
+        text-align: center;
+    
+    }
+    
+    nav li a {
+    
+        display: block;
+    
+        text-decoration: none;
+    
+        margin-right: 0;   /* space between links */
+    
+        width: auto;   /* adjust width as needed or use auto */
+    
+        padding: 6px;
+    
+        font-weight: bold;
+    
+        line-height: 2em;
+    
+        color:#1e5799;
+    
+        border-right: 1px solid #000;
+    
+    }
+    
+    /*remove from last item*/
+    
+    nav li:last-child a {
+    
+        border:none;
+    
+    }
+    
+    /*float clearing*/
+    
+    nav:after {
+    
+         content: '';
+    
+         clear:left;
+    
+         display:block;
+    
+    }
+
+    .container .img{
+        text-align:center;
+    }
+    .container .details{
+        border-left:3px solid #ded4da;
+    }
+    .container .details p{
+        font-size:15px;
+        font-weight:bold;
+    }

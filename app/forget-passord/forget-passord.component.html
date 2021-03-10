@@ -1,0 +1,14 @@
+<section style="margin-top: 100px;" class="col-md-8 mx-auto">
+  <div class="alert alert-success" *ngIf="msg !=undefined">{{msg}}</div>
+  <div class="alert alert-danger" *ngIf="errorMsg !=undefined">{{errorMsg}}</div>
+  
+<div *ngIf="token==null">
+  <h2 class="text-center">Forgot Password</h2>
+  <hr width="120">
+  <br>
+  <input type="text" [(ngModel)]="customerId" class="form-control" placeholder=" Enter Customer Id"/><br>
+  <div class="mt-2 text-center">
+  <button class="btn btn-success" (click)="forgetpassword()">Submit</button><br>
+ </div>
+</div>
+</section>

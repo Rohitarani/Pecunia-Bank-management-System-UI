@@ -1,0 +1,193 @@
+<!-- 
+<div *ngIf="role=='admin'">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col col-lg-1"></div>
+      <div class="col-md-auto">
+        <h2 class="text-center mt-4">Enter details to create new Customer</h2>
+        <hr/>
+        <Section class="col-md-4 mx-auto mt-3">
+          <div class="alert alert-success" *ngIf="msg !=undefined">{{msg}}</div>
+          <div class="alert alert-danger" *ngIf="errorMsg !=undefined">{{errorMsg}}</div>
+        </Section>
+        <form #frm="ngForm" (ngSubmit)="addCustomer()">
+          <div>Customer Name</div>
+          <div><input type="text"  class="form-control" required [(ngModel)]="customerform.customerName" name="name" #mcustomername="ngModel" pattern= "[A-Z][a-zA-Z ]*" placeholder="Contact Name" /></div>
+          <div class="alert alert-danger" *ngIf="mcustomername.invalid && mcustomername.touched">
+              <div *ngIf="mcustomername.errors.required" style="color: red;"> * Customer Name is required</div>
+              <div *ngIf="mcustomername.errors.pattern" style="color: red;">* Customer name should not contain digits and first alphabet should be capital.</div>
+          </div>
+
+          <div>Email Id</div>
+          <div><input type="email" class="form-control" required [(ngModel)]="customerform.email" name="email" #memail="ngModel" placeholder="E-mail" pattern="[a-z0-9._%+-]*[@][a-z]*[.][a-z]{2,4}"/></div>
+          <div class="alert alert-danger" *ngIf="memail.invalid && memail.touched">
+            <div *ngIf="memail.errors.required" style="color: red;"> * E-Mail is required</div>
+            <div *ngIf="memail.errors.pattern" style="color: red;">* Invalid email pattern.</div>
+          </div>
+
+
+          <div>Password</div>
+          <div><input type="password"  class="form-control" required [(ngModel)]="customerform.password" name="password" #mpassword="ngModel" placeholder="Password" /></div>
+          <div class="alert alert-danger" *ngIf="mpassword.invalid && mpassword.touched">
+            <div *ngIf="mpassword.errors.required" style="color: red;"> * password is required.</div>
+          </div> 
+
+
+          <div>Customer Address</div>
+          <div><input type="text"  class="form-control" required [(ngModel)]="customerform.customerAddress" name="custAddress" #maddress="ngModel" placeholder="Address"/></div>
+          <div class="alert alert-danger" *ngIf="maddress.invalid && maddress.touched">
+            <div *ngIf="maddress.errors.required" style="color: red;"> * address is required.</div>
+          </div>
+    
+          <div>Customer Adhar</div>
+          <div><input type="text"  class="form-control" required [(ngModel)]="customerform.customerAadhar" name="custAdhar"  #maadhar="ngModel" placeholder="XXXXXXXXXXXXXXXX" pattern="[1-9][0-9]*" minlength="16" maxlength="16"/></div>
+          <div class="alert alert-danger" *ngIf="maadhar.invalid && maadhar.touched">
+            <div *ngIf="maadhar.errors.required" style="color: red;"> * aadher number is required.</div>
+            <div *ngIf="maadhar.errors.pattern" style="color: red;"> * adhar number should have digits only.</div>
+            <div *ngIf="maadhar.errors.minlength" style="color: red;"> * 16 digits are required.</div>
+          </div>
+
+
+          <div>Customer Pan</div>
+          <div><input type="text"   class="form-control" required [(ngModel)]="customerform.customerPan" name="custPan" #mpan="ngModel" placeholder="Ex :- AAAPL1234C" pattern="[A-Z]{5}[0-9]{4}[A-Z]" minlength="10"/></div>
+          <div class="alert alert-danger" *ngIf="mpan.invalid && mpan.touched">
+            <div *ngIf="mpan.errors.required" style="color: red;"> * pan number is required.</div>
+            <div *ngIf="mpan.errors.pattern" style="color: red;"> * pattern should be Ex :- AAAPL1234C.</div>
+            
+          </div>
+    
+          <div>Customer Contact</div>
+          <div><input type="text"   class="form-control" required [(ngModel)]="customerform.customerContact" name="custContact" #mcontact="ngModel" placeholder="Contact Number" pattern="[1-9][0-9]*" minlength="10" maxlength="10" maxlength="10"/></div>
+          <div class="alert alert-danger" *ngIf="mcontact.invalid && mcontact.touched">
+            <div *ngIf="mcontact.errors.required" style="color: red;"> * Contact number is required</div>
+            <div *ngIf="mcontact.errors.pattern" style="color: red;"> * Contact number should have digits only.</div>
+            <div *ngIf="mcontact.errors.minlength" style="color: red;"> * 10 digits are required.</div>
+          </div>
+
+          <div>Customer Gender</div>
+          <select [(ngModel)]="customerform.customerGender" name="custGender" class="form-control" required #mgender="ngModel">
+            <option value="">--select gender--</option>
+            <option  value="male">Male</option>
+            <option  value="female">Female</option>
+            <option  value="other">Others</option>
+          </select>
+          <div class="alert alert-danger" *ngIf="mgender.invalid && mgender.touched">* Gender is required</div>
+
+
+          <div>Customer Date Of Birth</div>
+          <div><input type="date"  class="form-control" required [(ngModel)]="customerform.customerDob" name="custdob" placeholder="yyyy-M-d" [max]="getToday()"/></div>
+    
+    
+          <div><input type="Submit" value="Add Customer" [disabled]="!frm.valid" class="btn btn-warning mt-2 text-center"/></div>
+    
+        </form>
+      </div>
+      <div class="col col-lg-3"></div>
+      </div>
+      </div>
+</div>
+
+
+<div *ngIf="role=='customer'" class="mt-5">
+  <div class="alert alert-danger">You are not authorised</div>
+</div>
+
+ -->
+
+
+
+<div style="margin-top: 100px; margin-bottom: 50px;" *ngIf="role=='admin'">
+  <h2 class="text-center">Add Customer</h2>
+  <hr width="120">
+  <br>
+
+  <Section class="col-md-4 mx-auto mt-3">
+    <div class="alert alert-success" *ngIf="msg !=undefined">{{msg}}</div>
+    <div class="alert alert-danger" *ngIf="errorMsg !=undefined">{{errorMsg}}</div>
+  </Section>    
+  
+  <div style="width: 455px; margin: 0 auto;">
+    <form #frm="ngForm" (ngSubmit)="addCustomer()">
+
+          <div style="width:100%"><input type="text"  class="form-control" required [(ngModel)]="customerform.customerName" name="name" #mcustomername="ngModel" pattern= "[A-Z][a-zA-Z ]*" placeholder="Customer Name" />
+          <div class="alert alert-danger" *ngIf="mcustomername.invalid && mcustomername.touched">
+              <div *ngIf="mcustomername.errors.required" style="color: red;"> * Customer Name is required</div>
+              <div *ngIf="mcustomername.errors.pattern" style="color: red;"> Customer name should not contain digits and first alphabet should be capital.</div>
+          </div>
+          </div>
+
+          <br>
+          <div style="display: inline-block; "><input type="email" class="form-control" required [(ngModel)]="customerform.email" name="email" #memail="ngModel" placeholder="E-mail" pattern="[a-z0-9._%+-]*[@][a-z]*[.][a-z]{2,4}"/>
+          <div class="alert alert-danger" *ngIf="memail.invalid && memail.touched">
+            <div *ngIf="memail.errors.required" style="color: red;"> * E-Mail is required</div>
+            <div *ngIf="memail.errors.pattern" style="color: red;"> Invalid email pattern.</div>
+          </div>
+          </div>
+
+          &nbsp;
+          <div style="display: inline-block;"><input type="password"  class="form-control" required [(ngModel)]="customerform.password" name="password" #mpassword="ngModel" placeholder="Password" />
+          <div class="alert alert-danger" *ngIf="mpassword.invalid && mpassword.touched">
+            <div *ngIf="mpassword.errors.required" style="color: red;"> * password is required.</div>
+          </div> 
+        </div>
+          <br>
+          <br>
+
+          <div><input type="text"  class="form-control" required [(ngModel)]="customerform.customerAddress" name="custAddress" #maddress="ngModel" placeholder="Address"/></div>
+          <div class="alert alert-danger" *ngIf="maddress.invalid && maddress.touched">
+            <div *ngIf="maddress.errors.required" style="color: red;"> * address is required.</div>
+          </div>
+    
+          <br>
+
+          <div style="display: inline-block; width: 48%;"><input type="text"  class="form-control" required [(ngModel)]="customerform.customerAadhar" name="custAdhar"  #maadhar="ngModel" placeholder="Aadhar no." pattern="[1-9][0-9]{15}" minlength="16" maxlength="16"/>
+          <div class="alert alert-danger" *ngIf="maadhar.invalid && maadhar.touched">
+            <div *ngIf="maadhar.errors.required" style="color: red;"> * aadher number is required.</div>
+            <div *ngIf="maadhar.errors.pattern" style="color: red;"> * adhar number should have digits only.</div>
+            <div *ngIf="maadhar.errors.minlength" style="color: red;"> * 16 digits are required.</div>
+          </div>
+          </div>
+          &nbsp;
+          <div style="display: inline-block; width: 48%; "><input type="text"   class="form-control" required [(ngModel)]="customerform.customerPan" name="custPan" #mpan="ngModel" placeholder="PAN no. (AAAPL1234C)" pattern="[A-Z]{5}[0-9]{4}[A-Z]" minlength="10"/>
+          <div class="alert alert-danger" *ngIf="mpan.invalid && mpan.touched">
+            <div *ngIf="mpan.errors.required" style="color: red;"> * pan number is required.</div>
+            <div *ngIf="mpan.errors.pattern" style="color: red;"> * pattern should be Ex :- AAAPL1234C.</div>  
+          </div>
+          </div>
+          <br>
+          <br>
+          <div style="display: inline-block; width: 35%;"><input type="text"   class="form-control" required [(ngModel)]="customerform.customerContact" name="custContact" #mcontact="ngModel" placeholder="Contact Number" pattern="[1-9][0-9]*" minlength="10" maxlength="10" maxlength="10"/>
+          <div class="alert alert-danger" *ngIf="mcontact.invalid && mcontact.touched">
+            <div *ngIf="mcontact.errors.required" style="color: red;"> * Contact number is required</div>
+            <div *ngIf="mcontact.errors.pattern" style="color: red;"> * Contact number should have digits only.</div>
+            <div *ngIf="mcontact.errors.minlength" style="color: red;"> * 10 digits are required.</div>
+          </div>
+          </div>
+          &nbsp;
+          <div style="display: inline-block; width: 23.5%;">
+          <select [(ngModel)]="customerform.customerGender" name="custGender" class="form-control" required #mgender="ngModel">
+            <option [ngValue]="undefined" hidden disabled>Gender</option>
+            <option  value="male">Male</option>
+            <option  value="female">Female</option>
+            <option  value="other">Others</option>
+          </select>
+        
+          <div class="alert alert-danger" *ngIf="mgender.invalid && mgender.touched"> Gender is required</div>
+          </div>
+          &nbsp;
+
+          <div style="display: inline-block; width: 35%;"><input type="date"  class="form-control" required [(ngModel)]="customerform.customerDob" name="custdob" placeholder="yyyy-M-d" [max]="getToday()"/></div>
+    
+          <br>
+          <br>
+
+          <div class="mt-2 text-center"><input type="Submit" value="Add Customer" [disabled]="!frm.valid" class="btn btn-warning mt-2 text-center"/></div>
+    
+        </form>
+    </div>
+</div>
+
+
+<div *ngIf="role=='customer'" class="mt-5">
+  <div class="alert alert-danger">You are not authorised</div>
+</div>

@@ -1,0 +1,112 @@
+<!-- <div *ngIf="role=='admin'">
+
+  
+  <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col col-lg-1"></div>
+        <div class="col-md-auto">
+          <h2 class="text-center mt-4">Enter details to create new Account</h2>
+          <hr/>
+          <Section class="col-md-6 mx-auto mt-3">
+            <div class="alert alert-success" *ngIf="msg !=undefined">{{msg}}</div>
+            <div class="alert alert-danger" *ngIf="errorMsg !=undefined">{{errorMsg}}</div>
+          </Section>
+          <form #frm="ngForm" (ngSubmit)="addAccount()">
+            <div>Account Type</div>
+            <select [(ngModel)]="accountForm.accountName" name="type" class="form-control" required #modelaccounttype="ngModel">
+                <option value="">--select type--</option>
+                <option *ngFor="let acc of accType" value="{{acc}}">{{acc}}</option>
+            </select>
+
+            <div class="alert alert-danger" *ngIf="modelaccounttype.invalid && modelaccounttype.touched">
+             
+              <div *ngIf="modelaccounttype.errors.required" style="color: red;"> * Account Type is required</div>
+            </div>
+    
+            <div>Balance</div>
+            <div><input type="text" required [(ngModel)]="accountForm.balance" name="balance" class="form-control" required #mbalance="ngModel" pattern="[0-9]*" /></div>
+            <div class="alert alert-danger" *ngIf="mbalance.invalid && mbalance.touched">
+              <div *ngIf="mbalance.errors.required" style="color: red;">* Amount is required</div>
+              <div *ngIf="mbalance.errors.pattern" style="color: red;">* Amount should be numeric</div>
+            </div>
+
+
+            <div>CustomerId</div>
+            <div><input type="text" required [(ngModel)]="accountForm.customerID" name="id" class="form-control" required #mcustomerid="ngModel" pattern="[0-9]*" max="4/4/2020"/></div>
+            <div class="alert alert-danger" *ngIf="mcustomerid.invalid && mcustomerid.touched">
+              
+              <div *ngIf="mcustomerid.errors.required" style="color: red;">* Customer ID is required</div>
+              <div *ngIf="mcustomerid.errors.pattern" style="color: red;">* customerID should be numeric</div>
+            </div>
+
+            <div><input type="Submit" value="Add Account" [disabled]="!frm.valid" class="btn btn-warning mt-2 text-center"/></div>
+    
+          </form>
+        </div>
+        <div class="col col-lg-3"></div>
+      </div>
+
+  </div>
+ 
+
+</div>
+
+<div *ngIf="role=='customer'" class="mt-5">
+  <div class="alert alert-danger">You are not authorised</div>
+</div>
+
+
+ -->
+ <div style="margin-top: 100px; margin-bottom: 50px;" *ngIf="role=='admin'">
+  <h2 class="text-center">Add Account</h2>
+  <hr width="120"> 
+  <br>
+  <Section class="col-md-6 mx-auto mt-3">
+    <div class="alert alert-success" *ngIf="msg !=undefined">{{msg}}</div>
+    <div class="alert alert-danger" *ngIf="errorMsg !=undefined">{{errorMsg}}</div>
+  </Section>
+
+  <div class="d-flex justify-content-center">
+       <form #frm="ngForm" (ngSubmit)="addAccount()">
+            
+            <select [(ngModel)]="accountForm.accountName" name="type" class="form-control" required #modelaccounttype="ngModel" >
+                <option [ngValue]="undefined" hidden disabled>Account type</option>
+                <option *ngFor="let acc of accType" value="{{acc}}">{{acc}}</option>
+            </select>
+
+            <div class="alert alert-danger" *ngIf="modelaccounttype.invalid && modelaccounttype.touched">
+             
+              <div *ngIf="modelaccounttype.errors.required" style="color: red;"> * Account Type is required</div>
+            </div>
+            <br>
+    
+            <div><input type="text" required [(ngModel)]="accountForm.balance" name="balance" class="form-control" required #mbalance="ngModel" pattern="[0-9]*" placeholder="Account balance"/></div>
+            <div class="alert alert-danger" *ngIf="mbalance.invalid && mbalance.touched">
+              <div *ngIf="mbalance.errors.required" style="color: red;"> Amount is required</div>
+              <div *ngIf="mbalance.errors.pattern" style="color: red;"> Amount should be numeric</div>
+            </div>
+
+
+            <br>
+            <div><input type="text" required [(ngModel)]="accountForm.customerID" name="id" class="form-control" required #mcustomerid="ngModel" pattern="[0-9]*" max="4/4/2020" placeholder="Customer Id"/></div>
+            <div class="alert alert-danger" *ngIf="mcustomerid.invalid && mcustomerid.touched">
+              
+              <div *ngIf="mcustomerid.errors.required" style="color: red;"> Customer ID is required</div>
+              <div *ngIf="mcustomerid.errors.pattern" style="color: red;"> customerID should be numeric</div>
+            </div>
+
+            <br>
+
+            <div class="mt-2 text-center"><input type="Submit" value="Add Account" [disabled]="!frm.valid" class="btn btn-warning mt-2 text-center"/></div>
+    
+          </form>
+
+
+  </div>
+ 
+
+</div>
+
+<div *ngIf="role=='customer'" class="mt-5">
+  <div class="alert alert-danger">You are not authorised</div>
+</div>
